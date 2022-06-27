@@ -1,7 +1,7 @@
 {
   "name": "laze",
   "version": "0.0.0",
-  "description": "Lazy http e2e testing ",
+  "description": "lazy HTTP e2e testing.",
   "author": "Wassef911 @wassef911",
   "bin": {
     "laze": "./bin/run"
@@ -20,6 +20,7 @@
     "@oclif/core": "^1",
     "@oclif/plugin-help": "^5",
     "@oclif/plugin-plugins": "^2.0.1",
+    "chalk": "^5.0.1",
     "yaml": "^2.1.1"
   },
   "devDependencies": {
