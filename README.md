@@ -8,6 +8,8 @@
 - **(medium to do)** support multiple nested resources **eg. :muni/:user/:things**
 - **(medium to do)** support **JWT** with with a **BeforeSuiteScript** to generate an access token for each suite or for all.
 
+![example](./laze_example.png)
+
 _________________________________
 **technical details**
 for the demo, used https://oclif.io/(by salesforce) to build the cli.. it takes care of versioning/scaffolding/documenting...
