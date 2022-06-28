@@ -1,14 +1,17 @@
 import * as fs from 'fs';
-import YAML from "yaml";
-import { ISuite } from "../interfaces/index";
+import * as YAML from "yaml";
+import { ISuite } from "../interface";
 
-export const fileExists = (path: string | string[]): boolean => {
+export const fileExists = (path: string | string[] | undefined): boolean => {
   if (typeof path === 'string') {
     return true;
   }
 
-  const resutls = path.map((p) => fileExists(p));
-  return resutls.every((el) => el === true);
+  if (Array.isArray(path)) {
+    const resutls = path.map((p) => fileExists(p));
+    return resutls.every((el) => el === true);
+  }
+  return false;
 }
 
 /**
@@ -22,6 +25,7 @@ export const hasResults = (input: ISuite | ISuite[]): boolean => {
   } else {
     if (input?.cases?.length) {
       return input.cases.every((c) => {
+        // @ts-ignore
         (fileExists(c?.out)) || (typeof c?.status === "number")
       })
     }
@@ -33,4 +37,3 @@ export const parseYAML = (path: string, encoding: BufferEncoding = 'utf8'): any 
   const file = fs.readFileSync(path, encoding);
   return YAML.parse(file);
 }
-
